@@ -1,0 +1,91 @@
+.header {
+    display: flex;
+    width: 100%;
+    max-height: 400px;
+    /* margin-bottom: 50px; */
+    background-color: rgb(128, 128, 128);
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+
+}
+
+.troley {
+    display: flex;
+    width: 400px;
+    height: 400px;
+}
+
+.troley img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+.troley .count {
+    position: relative;
+    top: 75%;
+    /* right: 0; */
+    color: antiquewhite;
+    font-size: 70px;
+
+}
+
+.card {
+
+    max-width: 100%;
+
+    background-color: rgb(196, 196, 196);
+
+
+}
+
+.img-thumb-prod {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.card p {
+
+    font-size: 18px;
+    color: rgb(39, 39, 39);
+    text-align: center;
+    font-family: sans-serif;
+
+}
+
+.counter {
+    display: flex;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+    padding: 5px;
+    text-align: center;
+    width: 400px;
+    height: 200px;
+}
+
+.counter .minus,
+.counter .plus {
+    background-color: blue;
+    color: white;
+    border: none;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.counter button,
+.counter input {
+    width: 200px;
+    height: 60px;
+}
