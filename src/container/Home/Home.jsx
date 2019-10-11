@@ -1,13 +1,25 @@
 import React, { Component } from "react";
-import YoutubeComp from "../../component/YoutubeComp/YoutubeComp";
-import Product from '../Product/Product';
+// import YoutubeComp from "../../component/YoutubeComp/YoutubeComp";
+// import Product from '../Product/Product';
+import LifeCycleComp from "../LifeCycleComp/LifeCycleComp";
 
 
 class Home extends Component {
+  state = {
+    showComp: true
+  }
+  componentDidMount() {
+    // setTimeout(() => {
+
+    //   this.setState({
+    //     showComp: false
+    //   })
+    // }, 7000)
+  }
   render() {
     return (
       <div>
-        <p>Youtube omponentC</p>
+        {/* <p>Youtube omponentC</p>
         <hr />
         <YoutubeComp
           desc="abang kamu maau ngengek"
@@ -32,7 +44,15 @@ class Home extends Component {
         <YoutubeComp />
         <p>Counter</p>
         <hr />
-        <Product />
+        <Product /> */}
+        <p>Life Cycle Component</p>
+        <hr />
+        {
+          this.state.showComp ?
+
+            <LifeCycleComp></LifeCycleComp>
+            : null
+        }
       </div>
     );
   }
