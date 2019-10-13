@@ -19,7 +19,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        {/* <p>Youtube omponentC</p>
+        <p>Youtube omponentC</p>
         <hr />
         <YoutubeComp
           desc="abang kamu maau ngengek"
@@ -44,7 +44,7 @@ class Home extends Component {
         <YoutubeComp />
         <p>Counter</p>
         <hr />
-        <Product /> */}
+        <Product />
         <p>Life Cycle Component</p>
         <hr />
         {
