@@ -6,8 +6,9 @@ class BlogPost extends Component {
     state = {
         post: []
     }
-    componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/posts')
+
+    getPostApi = () => {
+        fetch('http://localhost:3004/posts')
             .then(response => response.json())
             .then(json => {
                 this.setState({
@@ -16,6 +17,21 @@ class BlogPost extends Component {
             })
     }
 
+    handleRemove = (data) => {
+        fetch(`http://localhost:3004/posts/${data}`, {
+            method: 'DELETE'
+        })
+            .then((res) => {
+                this.getPostApi();
+            }
+            )
+    }
+
+    componentDidMount() {
+        this.getPostApi();
+    }
+
+
     render() {
         return (
             <Fragment>
@@ -23,7 +39,7 @@ class BlogPost extends Component {
                 <p className="blog">Blog Posy</p>
                 {
                     this.state.post.map(post => {
-                        return <Post key={post.id} title={post.title} desc={post.body}></Post>
+                        return <Post key={post.id} data={post} remove={this.handleRemove}></Post>
 
                     })
                 }
