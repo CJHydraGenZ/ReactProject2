@@ -5,6 +5,7 @@
     padding: 5px;
     border-radius: 4px;
     margin: 20px 10px;
+
 }
 
 
@@ -39,5 +40,69 @@
 }
 
 .remove:hover {
+    cursor: pointer;
+}
+
+.form-app-post {
+    position: relative;
+    width: 600px;
+    height: 500px;
+    display: grid;
+    grid-template-rows: 55px 55px 55px 200px;
+    /* border: 1px solid rgba(0, 0, 0, 0.7); */
+    /* filter: drop-shadow(1px 3px 6px rgba(0, 0, 0, 0.3)); */
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.7);
+    margin: 20px 10px;
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: rgb(0, 151, 151);
+}
+
+.form-app-post input {
+    padding: 3px;
+    /* outline: none; */
+    /* border: none; */
+    /* text-decoration: none; */
+    /* -webkit-appearance: none; */
+    border: 1px solid rgb(169, 169, 169)
+}
+
+.form-app-post .ttl {
+    margin-top: 20px;
+}
+
+.form-app-post .bc {
+    margin-top: 30px;
+}
+
+.form-app-post input,
+.form-app-post #body-content {
+    /* height: 200px; */
+    border-radius: 4px;
+    /* border-color: rgb(211, 211, 211); */
+    /* color: rgb(0, 151, 151) */
+}
+
+/* .form-app-post .title,
+.form-app-post input {
+    width: 578px;
+    height: 55px;
+} */
+
+.btn-submit {
+    margin-top: 80px;
+    width: 100px;
+    height: 35px;
+    /* outline: none; */
+    border: 1px solid aqua;
+    background-color: white;
+    border-radius: 3px;
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    outline: none;
+}
+
+.btn-submit:hover {
+    border: 2px solid black;
     cursor: pointer;
 }
