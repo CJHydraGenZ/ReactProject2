@@ -10,7 +10,8 @@ class BlogPost extends Component {
             title: '',
             body: '',
             userId: 1
-        }
+        },
+        isUpdate: false
     }
 
     getPostApi = () => {
@@ -35,10 +36,40 @@ class BlogPost extends Component {
             .then(res => {
                 this.getPostApi()
                 console.log(res);
+                this.setState({
+
+                    formlogpost: {
+                        id: 1,
+                        title: '',
+                        body: '',
+                        userId: 1
+                    }
+                })
 
             })
     }
-
+    putDataToApi = () => {
+        fetch(`http://localhost:3004/posts/${this.state.formlogpost.id}`, {
+            method: 'PUT',
+            body: JSON.stringify(this.state.formlogpost),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then(res => {
+                console.log(res);
+                this.getPostApi()
+                this.setState({
+                    isUpdate: false,
+                    formlogpost: {
+                        id: 1,
+                        title: '',
+                        body: '',
+                        userId: 1
+                    }
+                })
+            })
+    }
     handleRemove = (data) => {
         fetch(`http://localhost:3004/posts/${data}`, {
             method: 'DELETE'
@@ -48,12 +79,25 @@ class BlogPost extends Component {
             }
             )
     }
+
+    handleUpdate = (data) => {
+        console.log(data);
+        this.setState({
+            formlogpost: data,
+            isUpdate: true
+        })
+
+
+    }
+
     handleformChange = (event) => {
         // console.log('form onChange', event.target.value);
         let formBlogPostNew = { ...this.state.formlogpost };
         let timeTamp = new Date().getTime()
-        formBlogPostNew['id'] = timeTamp
 
+        if (!this.state.isUpdate) {
+            formBlogPostNew['id'] = timeTamp
+        }
         // console.log(event.target.name);
 
         formBlogPostNew[event.target.name] = event.target.value
@@ -67,7 +111,12 @@ class BlogPost extends Component {
     }
 
     handleSubmit = () => {
-        this.postDataAPI();
+        if (this.state.isUpdate) {
+            this.putDataToApi()
+        } else {
+
+            this.postDataAPI();
+        }
 
     }
 
@@ -83,14 +132,14 @@ class BlogPost extends Component {
                 <p className="blog">Blog Posy</p>
                 <div className="form-app-post">
                     <label htmlFor="title" className="ttl">Titile</label>
-                    <input type="text" name="title" placeholder="addTitle" onChange={this.handleformChange} />
+                    <input type="text" value={this.state.formlogpost.title} name="title" placeholder="addTitle" onChange={this.handleformChange} />
                     <label htmlFor="body" className="bc">Blog Content</label>
-                    <textarea name="body" id="body-content" cols="30" rows="10" placeholder="Masukan Blog content" onChange={this.handleformChange}></textarea>
+                    <textarea name="body" id="body-content" cols="30" rows="10" value={this.state.formlogpost.body} placeholder="Masukan Blog content" onChange={this.handleformChange}></textarea>
                     <button className="btn-submit" onClick={this.handleSubmit}>Simpan</button>
                 </div>
                 {
                     this.state.post.map(post => {
-                        return <Post key={post.id} data={post} remove={this.handleRemove}></Post>
+                        return <Post key={post.id} data={post} remove={this.handleRemove} update={this.handleUpdate}></Post>
 
                     })
                 }
