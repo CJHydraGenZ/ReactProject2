@@ -1,63 +1,60 @@
-import React, { Component } from "react";
-// import YoutubeComp from "../../component/YoutubeComp/YoutubeComp";
-// import Product from '../Product/Product';
-import LifeCycleComp from "../LifeCycleComp/LifeCycleComp";
-import BlogPost from "../BlogPost/BlogPost";
-
+//lebralies
+import React, { Component, Fragment } from "react";
+//pages
+import Product from '../pages/Product/Product';
+import LifeCycleComp from "../pages/LifeCycleComp/LifeCycleComp";
+import BlogPost from "../pages/BlogPost/BlogPost";
+import './Home.css'
+import {
+  BrowserRouter,
+  
+  Route,
+  Link
+} from "react-router-dom";
+import YoutubeCompPage from "../pages/YoutubeCompPage/YoutubeCompPage";
 
 class Home extends Component {
   state = {
     showComp: true
   }
-  componentDidMount() {
-    // setTimeout(() => {
 
-    //   this.setState({
-    //     showComp: false
-    //   })
-    // }, 7000)
-  }
   render() {
     return (
-      <div>
-        {/* <p>Youtube omponentC</p>
-        <hr />
-        <YoutubeComp
-          desc="abang kamu maau ngengek"
-          time="12121212"
-          title="Tahie"
-        />
-        <YoutubeComp
-          desc="Aku cinta sama kamu"
-          time="33333"
-          title="Yayswhehwe"
-        />
-        <YoutubeComp
-          desc="Calom Sarjana daftar populer"
-          time="1111"
-          title="Ujwejiwei"
-        />
-        <YoutubeComp
-          desc="Belajar Instant via online marketing"
-          time="4444"
-          title="wiweiwewewiei"
-        />
-        <YoutubeComp />
-        <p>Counter</p>
-        <hr />
-        <Product /> */}
-        {/* <p>Life Cycle Component</p>
-        <hr />
-        {
-          this.state.showComp ?
+      <BrowserRouter>
 
-            <LifeCycleComp></LifeCycleComp>
-            : null
-        } */}
-        <p>Blog post</p>
-        <hr/>
-        <BlogPost></BlogPost>
-      </div>
+        <Fragment>
+
+          <div className='navbar'>
+            <ul>
+              <li>
+
+                <Link to="/">Blog post</Link>
+              </li>
+              <li>
+
+                <Link to="/product">Product</Link>
+              </li>
+              <li>
+
+                <Link to="/lifecycle">Life Cycle</Link>
+              </li>
+              <li>
+
+                <Link to="/youtube-component">Youtube Component</Link>
+              </li>
+            </ul>
+          </div>
+          <div className="clearboth"></div>
+
+
+          <Route path="/" exact component={BlogPost}></Route>
+          <Route path="/product" component={Product}></Route>
+          <Route path="/lifecycle" component={LifeCycleComp}></Route>
+          <Route path="/youtube-component" component={YoutubeCompPage}></Route>
+        </Fragment>
+
+      </BrowserRouter>
+
     );
   }
 }

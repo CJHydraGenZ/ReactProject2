@@ -1,0 +1,28 @@
+.navbar {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background-color: aqua;
+
+}
+
+
+.navbar ul {
+    float: right;
+    list-style: none;
+
+}
+
+.clearboth {
+    clear: both;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+}

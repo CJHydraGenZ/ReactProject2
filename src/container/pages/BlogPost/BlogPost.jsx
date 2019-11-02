@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './BlogPost.css';
-import Post from '../../component/Post/Post';
+import Post from '../../../component/Post/Post';
 
 class BlogPost extends Component {
     state = {

@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import Img2 from './124.jpg';
 import img3 from './Portrait_-_Flame_Lord.png';
 import './Product.css';
-import CardProduct from '../CardProduct/CardProduct';
+import CardProduct from './CardProduct/CardProduct';
 
 
 class Product extends Component {
@@ -21,6 +21,8 @@ class Product extends Component {
   render() {
     return (
       <Fragment>
+        <p>titile Product</p>
+
         <div className="header">
           <div className="logo">
             <img src={Img2} alt="" />
