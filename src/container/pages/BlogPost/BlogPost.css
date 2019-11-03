@@ -27,6 +27,12 @@
 
 }
 
+.content .title:hover {
+    cursor: pointer;
+    color: red;
+
+}
+
 .update {
     background-color: rgb(0, 255, 85);
 }

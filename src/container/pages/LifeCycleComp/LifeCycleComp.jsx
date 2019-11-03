@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import './LifeCycleComp.css'
-
+import { connect } from 'react-redux'
 class LifeCycleComp extends Component {
   constructor(props) {
     super(props)
@@ -67,11 +67,19 @@ class LifeCycleComp extends Component {
       <Fragment>
 
         <p>title</p>
-      
+
         <button className="btn" onClick={this.changeCount}>Component button {this.state.count}</button>
+        <hr />
+        <p>Total Older: {this.props.older}</p>
       </Fragment>
     )
   }
 }
+const mapToProps = state => {
+  return {
 
-export default LifeCycleComp
+    older: state.totalOlder
+  }
+}
+
+export default connect(mapToProps)(LifeCycleComp)

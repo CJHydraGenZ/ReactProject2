@@ -7,11 +7,12 @@ import BlogPost from "../pages/BlogPost/BlogPost";
 import './Home.css'
 import {
   BrowserRouter,
-  
+
   Route,
   Link
 } from "react-router-dom";
 import YoutubeCompPage from "../pages/YoutubeCompPage/YoutubeCompPage";
+import DetailPost from "../pages/BlogPost/DetailPost/DetailPost";
 
 class Home extends Component {
   state = {
@@ -48,6 +49,7 @@ class Home extends Component {
 
 
           <Route path="/" exact component={BlogPost}></Route>
+          <Route path="/detail-post/:postID" component={DetailPost}></Route>
           <Route path="/product" component={Product}></Route>
           <Route path="/lifecycle" component={LifeCycleComp}></Route>
           <Route path="/youtube-component" component={YoutubeCompPage}></Route>
