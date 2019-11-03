@@ -5,6 +5,8 @@ import img3 from './Portrait_-_Flame_Lord.png';
 import './Product.css';
 import CardProduct from './CardProduct/CardProduct';
 import { connect } from 'react-redux'
+import { GlobalConsumer } from '../../../context/context';
+// import { RootContent } from '../../Home/Home'
 
 class Product extends Component {
   // state = {
@@ -29,19 +31,22 @@ class Product extends Component {
           </div>
           <div className="troley">
             <img src={img3} alt="" />
-            <div className="count">{this.props.order}</div>
+            <div className="count">{this.props.state.totalOlder}</div>
           </div>
         </div>
         <CardProduct />
       </Fragment>
+
+
     )
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    order: state.totalOlder
-  }
-}
+// const mapStateToProps = state => {
+//   return {
+//     order: state.totalOlder
+//   }
+// }
 
-export default connect(mapStateToProps)(Product);
+// export default connect(mapStateToProps)(Product);
+export default GlobalConsumer(Product);

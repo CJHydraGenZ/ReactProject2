@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import './LifeCycleComp.css'
 import { connect } from 'react-redux'
+import { GlobalConsumer } from '../../../context/context'
+// import { RootContent } from '../../Home/Home'
 class LifeCycleComp extends Component {
   constructor(props) {
     super(props)
@@ -70,16 +72,19 @@ class LifeCycleComp extends Component {
 
         <button className="btn" onClick={this.changeCount}>Component button {this.state.count}</button>
         <hr />
-        <p>Total Older: {this.props.older}</p>
+        <p>Total Older: {this.props.state.totalOlder}</p>
       </Fragment>
+
+
     )
   }
 }
-const mapToProps = state => {
-  return {
+// const mapToProps = state => {
+//   return {
 
-    older: state.totalOlder
-  }
-}
+//     older: state.totalOlder
+//   }
+// }
 
-export default connect(mapToProps)(LifeCycleComp)
+// export default connect(mapToProps)(LifeCycleComp)
+export default GlobalConsumer(LifeCycleComp)

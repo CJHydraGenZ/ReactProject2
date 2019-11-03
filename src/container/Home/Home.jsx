@@ -1,5 +1,5 @@
 //lebralies
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, createContext } from "react";
 //pages
 import Product from '../pages/Product/Product';
 import LifeCycleComp from "../pages/LifeCycleComp/LifeCycleComp";
@@ -13,11 +13,14 @@ import {
 } from "react-router-dom";
 import YoutubeCompPage from "../pages/YoutubeCompPage/YoutubeCompPage";
 import DetailPost from "../pages/BlogPost/DetailPost/DetailPost";
+import GlobalProvider from "../../context/context";
+
+
+
+
 
 class Home extends Component {
-  state = {
-    showComp: true
-  }
+
 
   render() {
     return (
@@ -55,10 +58,11 @@ class Home extends Component {
           <Route path="/youtube-component" component={YoutubeCompPage}></Route>
         </Fragment>
 
+
       </BrowserRouter>
 
     );
   }
 }
 
-export default Home;
+export default GlobalProvider(Home);

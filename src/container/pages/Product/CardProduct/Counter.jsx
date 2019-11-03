@@ -1,36 +1,35 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+
+
+import ActionType from '../../../../context/globalActionType'
+import { GlobalConsumer } from '../../../../context/context';
 
 class Counter extends Component {
 
 
 
     render() {
-        console.log(this.props);
+        console.log(this);
 
         return (
             <div className="counter">
-                <button className="minus" onClick={this.props.Minus}>-</button>
-                <input value={this.props.order} type="text" />
-                <button className="plus" onClick={this.props.Plus}>+</button>
+                <button className="minus" onClick={() => this.props.dispatch({
+                    type: ActionType.MINUS_OLDER
+                })}>-</button>
+                <input value={this.props.state.totalOlder} type="text" />
+                <button className="plus" onClick={() => this.props.dispatch({
+                    type: ActionType.PLUS_OLDER
+                })}>+</button>
             </div>
+
         )
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        order: state.totalOlder
-    }
-}
-const mapDispatchToProps = (dispatch) => {
-    return {
-        Plus: () => dispatch({ type: 'PLUS_OLDER' }),
-        Minus: () => dispatch({ type: 'MINUS_OLDER' })
-    }
-}
 
 
-//connect memiliki 2 parameter state dan dispatch
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+
+
+export default GlobalConsumer(Counter);
+
 

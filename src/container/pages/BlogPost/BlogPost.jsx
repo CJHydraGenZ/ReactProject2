@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './BlogPost.css';
 import Post from '../../../component/Post/Post';
+import API from '../../../services';
 
 class BlogPost extends Component {
     state = {
@@ -11,17 +12,22 @@ class BlogPost extends Component {
             body: '',
             userId: 1
         },
-        isUpdate: false
+        isUpdate: false,
+        comment: []
     }
 
     getPostApi = () => {
-        fetch('http://localhost:3004/posts?_sort=id&_order=desc')
-            .then(response => response.json())
-            .then(json => {
-                this.setState({
-                    post: json
-                })
+        API.getNewsBlog().then(result => {
+            this.setState({
+                post: result
             })
+        })
+
+        API.getComment().then(result => {
+            this.setState({
+                comment: result
+            })
+        })
     }
 
     postDataAPI = () => {
@@ -141,6 +147,11 @@ class BlogPost extends Component {
                     <textarea name="body" id="body-content" cols="30" rows="10" value={this.state.formlogpost.body} placeholder="Masukan Blog content" onChange={this.handleformChange}></textarea>
                     <button className="btn-submit" onClick={this.handleSubmit}>Simpan</button>
                 </div>
+                {
+                    this.state.comment.map(comment => {
+                        return <p>{comment.name} - {comment.email}</p>
+                    })
+                }
                 {
                     this.state.post.map(post => {
                         return <Post key={post.id} data={post} remove={this.handleRemove} update={this.handleUpdate} goDetail={this.handleDetail}></Post>
