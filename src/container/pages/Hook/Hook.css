@@ -1,0 +1,11 @@
+.p-hook {
+    padding: 4px;
+}
+
+.p-hook button{
+    padding: 12px 22px;
+    border-radius: 4px;
+    background: aqua;
+    text-transform: uppercase;
+    font-weight: bold;
+}
