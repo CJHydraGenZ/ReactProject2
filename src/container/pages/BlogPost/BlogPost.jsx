@@ -48,35 +48,25 @@ class BlogPost extends Component {
 
     }
     putDataToApi = () => {
-        fetch(`http://localhost:3004/posts/${this.state.formlogpost.id}`, {
-            method: 'PUT',
-            body: JSON.stringify(this.state.formlogpost),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
-            .then(res => {
-                console.log(res);
-                this.getPostApi()
-                this.setState({
-                    isUpdate: false,
-                    formlogpost: {
-                        id: 1,
-                        title: '',
-                        body: '',
-                        userId: 1
-                    }
-                })
+        API.updateNewsBlog(this.state.formlogpost, this.state.formlogpost.id).then(res => {
+            this.getPostApi()
+            this.setState({
+                isUpdate: false,
+                formlogpost: {
+                    id: 1,
+                    title: '',
+                    body: '',
+                    userId: 1
+                }
             })
+        })
+
     }
     handleRemove = (data) => {
-        fetch(`http://localhost:3004/posts/${data}`, {
-            method: 'DELETE'
+        API.deleteNewsBlog(data).then(res => {
+            this.getPostApi();
         })
-            .then((res) => {
-                this.getPostApi();
-            }
-            )
+
     }
 
     handleUpdate = (data) => {
