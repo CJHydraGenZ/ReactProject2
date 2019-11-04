@@ -1,23 +1,20 @@
-const RootPath = 'http://localhost:3004'
-const OnlineRoot = 'https://jsonplaceholder.typicode.com'
-const Get = (path, root) => {
-    const promise = new Promise((resolve, reject) => {
-        fetch(`${root ? OnlineRoot : RootPath}/${path}`)
-            .then(response => response.json())
-            .then(json => {
-                resolve(json)
+import Get from './Get'
+import Post from './Post'
 
-            }, (err) => {
-                reject(err)
-            })
-    })
-    return promise
-}
 
+
+
+
+//Post
+const postNewsBlog = (data) => Post('posts', false, data)
+
+
+//Get
 const getNewsBlog = () => Get('posts?_sort=id&_order=desc', false)
 const getComment = () => Get('comments', true)
 
 const API = {
+    postNewsBlog,
     getNewsBlog,
     getComment
 }

@@ -31,28 +31,21 @@ class BlogPost extends Component {
     }
 
     postDataAPI = () => {
-        fetch('http://localhost:3004/posts', {
-            method: 'POST',
-            body: JSON.stringify(this.state.formlogpost),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
+        API.postNewsBlog(this.state.formlogpost).then(res => {
+            this.getPostApi()
+            console.log(res);
+            this.setState({
+
+                formlogpost: {
+                    id: 1,
+                    title: '',
+                    body: '',
+                    userId: 1
+                }
+            })
 
         })
-            .then(res => {
-                this.getPostApi()
-                console.log(res);
-                this.setState({
 
-                    formlogpost: {
-                        id: 1,
-                        title: '',
-                        body: '',
-                        userId: 1
-                    }
-                })
-
-            })
     }
     putDataToApi = () => {
         fetch(`http://localhost:3004/posts/${this.state.formlogpost.id}`, {
@@ -147,11 +140,11 @@ class BlogPost extends Component {
                     <textarea name="body" id="body-content" cols="30" rows="10" value={this.state.formlogpost.body} placeholder="Masukan Blog content" onChange={this.handleformChange}></textarea>
                     <button className="btn-submit" onClick={this.handleSubmit}>Simpan</button>
                 </div>
-                {
+                {/* {
                     this.state.comment.map(comment => {
                         return <p>{comment.name} - {comment.email}</p>
                     })
-                }
+                } */}
                 {
                     this.state.post.map(post => {
                         return <Post key={post.id} data={post} remove={this.handleRemove} update={this.handleUpdate} goDetail={this.handleDetail}></Post>
